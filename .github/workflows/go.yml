@@ -37,3 +37,12 @@ jobs:
         DB_NAME: ${{secrets.DB_NAME}}
         DB_PORT: ${{secrets.DB_PORT}}
       run: go test -v main_test.go
+
+    - name: Gerando artefato
+      run: go build main.go
+
+    - name: Upload do artefato
+      uses: actions/upload-artifact@v4
+      with:
+        name: artefato
+        path: main
